@@ -1,0 +1,93 @@
+@charset "UTF-8";
+#balloon-container {
+  padding: 1em;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.balloon {
+  height: 125px;
+  width: 105px;
+  border-radius: 75% 75% 70% 70%;
+  position: relative;
+  -webkit-animation: fadeIn 1s infinite;
+          animation: fadeIn 1s infinite;
+  font-size: 2rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  visibility: visible;
+}
+
+@-webkit-keyframes fadeIn {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.balloon:before {
+  content: "";
+  height: 75px;
+  width: 1px;
+  padding: 1px;
+  background-color: #fdfd96;
+  position: absolute;
+  top: 125px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.balloon:after {
+  content: "▲";
+  text-align: center;
+  position: absolute;
+  color: inherit;
+  top: 120px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+@-webkit-keyframes float {
+  from {
+    transform: translateY(100vh);
+  }
+  to {
+    transform: translateY(-300vh);
+  }
+}
+
+@keyframes float {
+  from {
+    transform: translateY(100vh);
+  }
+  to {
+    transform: translateY(-300vh);
+  }
+}
+.hide {
+  visibility: hidden;
+}
+
+/* Popup container */
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 5s;
+  animation: fadeIn 5s;
+}
+
+/* Add animation (fade in the popup) *//*# sourceMappingURL=styles.css.map */
