@@ -74,7 +74,6 @@ function timer() {
     }
 
     if (tens > 99) {
-      console.log('seconds');
       seconds++;
       appendSeconds.innerHTML = '0' + seconds;
       tens = 0;
@@ -84,5 +83,6 @@ function timer() {
     if (seconds > 9) {
       appendSeconds.innerHTML = seconds;
     }
+    if (tens === 10) alert('stop');
   }
 }
