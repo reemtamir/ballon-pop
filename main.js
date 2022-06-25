@@ -1,6 +1,5 @@
 'use strict';
 var pop = new Audio('balloon.mp3');
-
 function random(num) {
   return Math.floor(Math.random() * num);
 }
@@ -11,7 +10,7 @@ function getRandomStyles() {
   var b = random(255);
   var mt = random(200);
   var ml = random(50);
-  var dur = random(10) + 10;
+  var dur = random(6) + 6;
   return `
   background-color: rgba(${r},${g},${b},0.7);
   color: rgba(${r},${g},${b},0.7); 
@@ -20,69 +19,59 @@ function getRandomStyles() {
   animation: float ${dur}s ease-in infinite
   `;
 }
+var h1 = document.querySelector('.header');
+var main = document.querySelector('.main');
+var balloonContainer = document.getElementById('balloon-container');
 var Interval;
 var count = 0;
 function createBalloons(num) {
-  var balloonContainer = document.getElementById('balloon-container');
+  h1.classList.remove('hide');
+  main.classList.remove('end-game');
+  balloonContainer.style.display = 'block';
   for (let i = num; i > 0; i--) {
     var balloon = document.createElement('div');
     balloon.className = 'balloon';
     balloon.id = i;
-
     balloon.style.cssText = getRandomStyles();
     balloonContainer.append(balloon);
-    if (i % 3 === 0) {
+    if (i % 4 === 0) {
       balloon.innerHTML = '🎯';
     }
 
-    balloon.addEventListener('click', function balloonPop(event, id) {
-      var balloon = document.querySelector('.balloon');
+    balloon.addEventListener('click', function balloonPop() {
       document.getElementById(i).classList.add('hide');
-      if (i % 3 === 0) count++;
+      if (i % 4 === 0) count++;
       pop.play();
       pop.currentTime = 0;
       if (count === 5) {
-        alert('game');
-        count = 0;
+        appendTens.innerHTML = ' WIN';
+        balloonContainer.style.display = 'none';
         clearInterval(Interval);
+        main.classList.add('end-game');
+        h1.classList.add('hide');
       }
     });
   }
-
-  //   setTimeout(() => {
-  //     if (count <= 4) alert('game over');
-  //   }, 20000);
 }
+var tens = 21;
+var appendTens = document.getElementById('tens');
 
 function timer() {
-  var seconds = 0;
-  var tens = 0;
-  var appendTens = document.getElementById('tens');
-  var appendSeconds = document.getElementById('seconds');
-
+  tens = 21;
+  count = 0;
   clearInterval(Interval);
   Interval = setInterval(startTimer, 1000);
-  function startTimer() {
-    tens++;
-
-    if (tens <= 9) {
-      appendTens.innerHTML = '0' + tens;
-    }
-
-    if (tens > 9) {
-      appendTens.innerHTML = tens;
-    }
-
-    if (tens > 99) {
-      seconds++;
-      appendSeconds.innerHTML = '0' + seconds;
-      tens = 0;
-      appendTens.innerHTML = '0' + 0;
-    }
-
-    if (seconds > 9) {
-      appendSeconds.innerHTML = seconds;
-    }
-    if (tens === 10) alert('stop');
+  startTimer();
+}
+function startTimer() {
+  tens--;
+  appendTens.innerHTML = +tens;
+  if (tens === 0) {
+    appendTens.innerHTML = 'GAME OVER';
+    count = 0;
+    clearInterval(Interval);
+    balloonContainer.style.display = 'none';
+    main.classList.add('end-game');
+    h1.classList.add('hide');
   }
 }

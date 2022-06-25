@@ -1,5 +1,31 @@
 @charset "UTF-8";
+body {
+  text-align: center;
+  background-color: lightblue;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 10px;
+  line-height: 2;
+  color: rgba(25, 19, 122, 0.685);
+}
+
+.main {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 100px;
+}
+
+#tens {
+  font-size: 3rem;
+  color: cadetblue;
+}
+
 #balloon-container {
+  height: 90vh;
   padding: 1em;
   box-sizing: border-box;
   display: flex;
@@ -12,8 +38,8 @@
   width: 105px;
   border-radius: 75% 75% 70% 70%;
   position: relative;
-  -webkit-animation: fadeIn 1s infinite;
-          animation: fadeIn 1s infinite;
+  -webkit-animation: float 1s infinite;
+          animation: float 1s infinite;
   font-size: 2rem;
   display: inline-flex;
   justify-content: center;
@@ -21,22 +47,6 @@
   visibility: visible;
 }
 
-@-webkit-keyframes fadeIn {
-  0%, 100% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-@keyframes fadeIn {
-  0%, 100% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-}
 .balloon:before {
   content: "";
   height: 75px;
@@ -82,7 +92,6 @@
   visibility: hidden;
 }
 
-/* Popup container */
 /* Toggle this class when clicking on the popup container (hide and show the popup) */
 .popup .show {
   visibility: visible;
@@ -90,4 +99,11 @@
   animation: fadeIn 5s;
 }
 
-/* Add animation (fade in the popup) *//*# sourceMappingURL=styles.css.map */
+/* Add animation (fade in the popup) */
+.end-game {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}/*# sourceMappingURL=styles.css.map */
