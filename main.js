@@ -43,7 +43,7 @@ function createBalloons(num) {
       if (i % 4 === 0) count++;
       pop.play();
       pop.currentTime = 0;
-      if (count === 5) {
+      if (count === 3) {
         appendTens.innerHTML = ' WIN';
         balloonContainer.style.display = 'none';
         clearInterval(Interval);
@@ -53,11 +53,11 @@ function createBalloons(num) {
     });
   }
 }
-var tens = 21;
+var tens = 15;
 var appendTens = document.getElementById('tens');
 
 function timer() {
-  tens = 21;
+  tens = 15;
   count = 0;
   clearInterval(Interval);
   Interval = setInterval(startTimer, 1000);
