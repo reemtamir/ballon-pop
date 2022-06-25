@@ -1,5 +1,6 @@
 'use strict';
 var pop = new Audio('balloon.mp3');
+var counter = document.querySelector('.counter');
 function random(num) {
   return Math.floor(Math.random() * num);
 }
@@ -25,6 +26,7 @@ var balloonContainer = document.getElementById('balloon-container');
 var Interval;
 var count = 0;
 function createBalloons(num) {
+  counter.innerHTML = '';
   h1.classList.remove('hide');
   main.classList.remove('end-game');
   balloonContainer.style.display = 'block';
@@ -41,6 +43,7 @@ function createBalloons(num) {
     balloon.addEventListener('click', function balloonPop() {
       document.getElementById(i).classList.add('hide');
       if (i % 4 === 0) count++;
+      counter.innerHTML = count;
       pop.play();
       pop.currentTime = 0;
       if (count === 3) {
